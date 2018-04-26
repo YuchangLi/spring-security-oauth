@@ -46,6 +46,12 @@ public class ClientApplication {
 		List<Map<String,?>> result = restTemplate.getForObject(baseUrl + "/admin/beans", List.class);
 		return result;
 	}
+
+	@RequestMapping("/hello")
+	public String hello() {
+	  return restTemplate.getForObject(baseUrl + "/", String.class);
+//	  return "/admin/hello";
+	}
 	
 	@Bean
 	public OAuth2RestOperations restTemplate(OAuth2ClientContext oauth2ClientContext) {
@@ -58,6 +64,7 @@ public class ClientApplication {
 		resource.setAccessTokenUri(tokenUrl);
 		resource.setUserAuthorizationUri(authorizeUrl);
 		resource.setClientId("my-trusted-client");
+//		resource.setClientSecret("secret");
 		return resource ;
 	}
 	

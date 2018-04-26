@@ -2,10 +2,15 @@ package demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.actuate.autoconfigure.ManagementServerProperties;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -15,6 +20,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 @SpringBootApplication
 @EnableResourceServer
@@ -28,6 +34,11 @@ public class Application {
 	@RequestMapping("/")
 	public String home() {
 		return "Hello World";
+	}
+	
+	@RequestMapping("/hello")
+	public String hello() {
+	  return "Hello World he";
 	}
 
 	@Configuration
@@ -63,7 +74,8 @@ public class Application {
 		            .scopes("read", "write", "trust")
 		            .accessTokenValiditySeconds(60)
 		            .refreshTokenValiditySeconds(160)
-		            .redirectUris("http://anywhere")
+		            .redirectUris("http://anywhere","http://localhost:8081/client/","http://localhost:8081/client/hello")
+//                    .secret("secret")
  		    .and()
 		        .withClient("my-client-with-registered-redirect")
 		            .authorizedGrantTypes("authorization_code")
