@@ -1,11 +1,20 @@
 spring:
   application:
-    name: vanilla
-management:
-  context_path: /admin
-security:
-  user:
-    password: password
-  oauth2:
-    resource:
-      filter-order: 3
+    name: resource
+
+server:
+  port: 8082
+
+#management:
+#  security:
+#    enabled: false
+#  context-path: /resource
+
+#security:
+#  user:
+#    password: password
+#  oauth2:
+#    resource:
+#      filter-order: 3
+#security:
+#  ignored: /resource/**

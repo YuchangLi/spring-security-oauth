@@ -74,7 +74,7 @@ public class Application {
 		            .scopes("read", "write", "trust")
 		            .accessTokenValiditySeconds(60)
 		            .refreshTokenValiditySeconds(160)
-		            .redirectUris("http://anywhere","http://localhost:8081/client/","http://localhost:8081/client/hello")
+		            .redirectUris("http://anywhere","http://localhost:8081/client/","http://localhost:8081/client/hello","http://localhost:8081/hello")
 //                    .secret("secret")
  		    .and()
 		        .withClient("my-client-with-registered-redirect")

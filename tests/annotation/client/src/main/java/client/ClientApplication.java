@@ -49,7 +49,8 @@ public class ClientApplication {
 
 	@RequestMapping("/hello")
 	public String hello() {
-	  return restTemplate.getForObject(baseUrl + "/", String.class);
+//	  return restTemplate.getForObject(baseUrl + "/", String.class);
+	  return restTemplate.getForObject("http://localhost:8082/hello", String.class);
 //	  return "/admin/hello";
 	}
 	

@@ -4,10 +4,10 @@ spring:
 server:
   port: 8081
   # use a different path for the client (otherwise cookies are shared)
-  context_path: /client
+  #context_path: /client
 security:
   basic:
     enabled: false
-  oauth2:
-    resource:
-      filter-order: 3
+#  oauth2:
+#    resource:
+#      filter-order: 3

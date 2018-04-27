@@ -62,6 +62,10 @@ public class ClientApplication {
 		List<Map<String, ?>> result = restTemplate().getForObject(baseUrl + "/admin/beans", List.class);
 		return result;
 	}
+	@RequestMapping("/hello")
+	public String hello() {
+	  return restTemplate().getForObject(baseUrl + "/", String.class);
+	}
 
 	@Bean
 	@Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
