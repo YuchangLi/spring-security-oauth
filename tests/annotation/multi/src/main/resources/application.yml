@@ -2,10 +2,10 @@ spring:
   application:
     name: vanilla
 management:
-  context_path: /admin
+  context-path: /admin
 security:
   user:
     password: password
 logging:
   level:
-    # org.springframework.security: DEBUG
+    org.springframework.security: DEBUG

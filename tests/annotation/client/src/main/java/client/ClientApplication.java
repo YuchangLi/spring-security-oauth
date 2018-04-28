@@ -17,6 +17,7 @@ import org.springframework.security.oauth2.client.token.grant.code.Authorization
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @EnableAutoConfiguration
@@ -40,7 +41,7 @@ public class ClientApplication {
 	@Autowired
 	private OAuth2RestOperations restTemplate;
 	
-	@RequestMapping("/")
+	@RequestMapping("/beans")
 	public List<Map<String,?>> home() {
 		@SuppressWarnings("unchecked")
 		List<Map<String,?>> result = restTemplate.getForObject(baseUrl + "/admin/beans", List.class);
@@ -49,8 +50,9 @@ public class ClientApplication {
 
 	@RequestMapping("/hello")
 	public String hello() {
-//	  return restTemplate.getForObject(baseUrl + "/", String.class);
-	  return restTemplate.getForObject("http://localhost:8082/hello", String.class);
+	  return restTemplate.getForObject(baseUrl + "/", String.class);
+//	  return restTemplate.getForObject("http://localhost:8082/hello", String.class);
+//	  return new RestTemplate().getForObject("http://localhost:8082/hello", String.class);
 //	  return "/admin/hello";
 	}
 	
@@ -65,6 +67,7 @@ public class ClientApplication {
 		resource.setAccessTokenUri(tokenUrl);
 		resource.setUserAuthorizationUri(authorizeUrl);
 		resource.setClientId("my-trusted-client");
+//		resource.setClientId("my-other-client-with-secret");
 //		resource.setClientSecret("secret");
 		return resource ;
 	}

@@ -73,7 +73,7 @@ public class Application {
 		            .scopes("read", "write", "trust")
 		            .resourceIds("oauth2-resource")
 		            .accessTokenValiditySeconds(600)
-		            .redirectUris("http://anywhere")
+		            .redirectUris("http://anywhere", "http://localhost:8081/client/beans", "http://localhost:8081/client/hello")
  		    .and()
 		        .withClient("my-client-with-registered-redirect")
 		            .authorizedGrantTypes("authorization_code")

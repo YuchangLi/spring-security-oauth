@@ -1,8 +1,12 @@
 spring:
   application:
     name: vanilla
+server:
+  port: 8080
+
 management:
-  context_path: /admin
+  context-path: /admin
+  
 security:
   user:
     password: password
